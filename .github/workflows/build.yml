@@ -4,8 +4,9 @@ on:
     branches:
       - main
 permissions:
-  contents: read
   security-events: write
+  contents: read
+  actions: read
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,14 +26,6 @@ jobs:
         file_path: apk-binary-code/sample-app.apk
         risk_threshold: HIGH
         sarif: 'true'
-      continue-on-error: true
-
-    - name: Upload SARIF Report
-      if: always()
-      uses: actions/upload-artifact@v3
-      with:
-        name: sarif-report
-        path: report.sarif
 
     - name: Upload SARIF to GHAS
       if: always()
