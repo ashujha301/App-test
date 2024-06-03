@@ -27,7 +27,7 @@ jobs:
         risk_threshold: HIGH
         sarif: 'true'
 
-    - name: Upload SARIF to GHAS
+    - name: Upload SARIF report to GitHub code scanning
       if: always()
       uses: github/codeql-action/upload-sarif@v3
       with:
